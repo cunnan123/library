@@ -1,0 +1,5 @@
+Git bash中执行命令
+    切换到其他分支时保存当前分支工作内容
+    git stash
+    由其它分支切换回当前分支恢复工作内容
+    git stash pop
