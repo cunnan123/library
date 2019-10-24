@@ -1,3 +1,0 @@
-class person{
-    accept(action){}
-}

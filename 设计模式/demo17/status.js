@@ -1,3 +1,0 @@
-class status{
-    handle(context){}
-}
