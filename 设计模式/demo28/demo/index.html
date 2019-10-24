@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>解释器模式</title>
+    <script src="./playContext.js"></script>
+    <script src="./expression.js"></script>
+    <script src="./note.js"></script>
+    <script src="./scale.js"></script>
+    <script src="./speed.js"></script>
+</head>
+<body>
+    <script>
+        var context=new playContext()    
+        console.log('上海滩')
+        context.text='t 500 o 2 e 0.5 g 0.5 a 3 e 0.5 g 0.5 d 3 e 0.5 g 0.5 a 0.5 o 3 c 1 o 2 a 0.5 g 1 c 0.5 e 0.5 d 3'
+        var expression1=null
+        try{
+           
+            while(context.text.length>0){
+                var str=context.text.substring(0,1)
+                switch(str){
+                    case 'o':{
+                        expression1=new scale()
+                        break
+                    }
+                    case 't':{
+                        expression1=new speed()
+                        break
+                    }
+                    case 'c':
+                    case 'd':
+                    case 'e':
+                    case 'f':
+                    case 'g':
+                    case 'a':
+                    case 'b':
+                    case 'p':{
+                        expression1=new note()
+                        break
+                    }
+                }
+                expression1.interpret(context)
+            }
+        }catch(e){
+
+        }
+    </script>
+</body>
+</html>

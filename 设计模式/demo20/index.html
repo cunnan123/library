@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组合模式</title>
+    <script src="./list.js"></script>
+    <script src="./component.js"></script>
+    <script src="./leaf.js"></script>
+    <script src="./composite.js"></script>
+</head>
+
+<body>
+    <script>
+        var root = new composite('root')
+        root.add(new leaf('leafA'))
+        root.add(new leaf('leafB'))
+
+        var comp = new composite('compositeX')
+        comp.add(new leaf('XA'))
+        comp.add(new leaf('XB'))
+
+        root.add(comp)
+
+        var comp2=new composite('compositeXX')
+        comp2.add(new leaf('XXA'))
+        comp2.add(new leaf('XXB'))
+
+        comp.add(comp2)
+
+        root.add(new leaf('leafC'))
+
+        var leafs=new leaf('leafD')
+        root.add(leafs)
+        root.remove(leafs)
+
+        root.display(1)
+
+    </script>
+</body>
+
+</html>

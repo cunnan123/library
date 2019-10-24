@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>备忘录模式</title>
+    <script src="./gameRole.js"></script>
+</head>
+<body>
+    <script>
+        var lvbo=new gameRole()
+        lvbo.showStatus()
+
+        var backup=new gameRole()
+        backup.vitality=lvbo.vitality
+        backup.attack=lvbo.attack
+        backup.defense=lvbo.defense
+
+        lvbo.fight()
+        lvbo.showStatus()
+
+        lvbo.vitality=backup.vitality
+        lvbo.attack=backup.attack
+        lvbo.defense=backup.defense
+
+        lvbo.showStatus()
+
+    </script>
+</body>
+</html>

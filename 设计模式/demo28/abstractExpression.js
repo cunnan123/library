@@ -1,0 +1,3 @@
+class abstractExpression{
+    interpret(context){}
+}

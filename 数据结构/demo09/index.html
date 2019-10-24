@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>排序</title>
+    <script src="./order.js"></script>
+</head>
+
+<body>
+    <script>
+        var arr = []
+        for (var i = 0; i < 100000; i++) {
+            arr[i] = Math.ceil(Math.random() * 1000000000)
+        }
+        var o = new order()
+        o.init(arr)
+        console.time('Array initialize');
+        o.orderAsc3()
+        console.timeEnd('Array initialize');
+        console.log(o.order)
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset ="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>建造者模式(生成器模式)</title>
+    <script src="./personBuilder.js"></script>
+    <script src="./person.js"></script>
+    <script src="./person1.js"></script>
+    <script src="./person2.js"></script>
+    <script src="./personDirector.js"></script>
+</head>
+<body>
+    <script>
+            var director=new personDirector()
+            var person11=new person1()
+            var person22=new person2()
+            director.createPerson(person11)
+            director.createPerson(person22)
+
+            person11.getList()
+            person22.getList()
+    </script>
+</body>
+</html>
