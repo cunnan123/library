@@ -1,0 +1,20 @@
+class list{
+    constructor(){
+        this.list=[]
+    }
+   display(action){
+       this.list.forEach(function(e){
+           e.accept(action)
+       })
+   }
+   add(item){
+       this.list.push(item)
+   }
+   remove(item){
+       this.list.forEach(function(e,i,arr){
+           if(e==item){
+               arr.splice(i,1)
+           }
+       })
+   }
+}

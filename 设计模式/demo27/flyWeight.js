@@ -1,0 +1,3 @@
+class flyWeight{
+    operation(extrinsicstate){}
+}

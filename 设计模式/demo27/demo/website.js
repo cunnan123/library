@@ -1,0 +1,3 @@
+class website{
+    use(){}
+}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>外观模式（门面模式）</title>
+    <script src="./a.js"></script>
+    <script src="./b.js"></script>
+    <script src="./ins.js"></script>
+</head>
+<body>
+    <script>
+        // mvc架构的层与层之间的那一层，使耦合降低
+        // 旧系统的引用接口，使代码结构清晰
+        var obj=new ins()
+        obj.buyins();
+        obj.sellins();
+    </script>
+</body>
+</html>

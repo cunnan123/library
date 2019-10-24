@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>享元模式</title>
+    <script src="./list.js"></script>
+    <script src="./flyWeight.js"></script>
+    <script src="./concreteFlyweight.js"></script>
+    <script src="./unsharedConcreteFlyweight.js"></script>
+    <script src="./flyWeightFactory.js"></script>
+</head>
+<body>
+    <script>
+        var extrinsicstate=22    
+        var f=new flyWeightFactory()
+        var fx=f.getFlyweight('x')
+        fx.operation(--extrinsicstate)
+
+        var fy=f.getFlyweight('y')
+        fy.operation(--extrinsicstate)
+
+        var fz=f.getFlyweight('z')
+        fz.operation(--extrinsicstate)
+
+        var uf=new unsharedConcreteFlyweight()
+        uf.operation(--extrinsicstate)
+    </script>
+</body>
+</html>

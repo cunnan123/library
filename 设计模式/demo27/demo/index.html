@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./list.js"></script>
+    <script src="./website.js"></script>
+    <script src="./website1.js"></script>
+    <script src="./websiteFactory.js"></script>
+</head>
+<body>
+    <script>
+        var f=new websiteFactory()    
+
+        var fx=f.getWebsiteCatogary('产品展示')
+        fx.use()
+        var fy=f.getWebsiteCatogary('产品展示')
+        fy.use()
+        var fz=f.getWebsiteCatogary('产品展示')
+        fz.use()
+        var fl=f.getWebsiteCatogary('博客')
+        fl.use()
+        var fm=f.getWebsiteCatogary('博客')
+        fm.use()
+        var fn=f.getWebsiteCatogary('博客')
+        fn.use()
+
+        console.log('网站分类总数',f.getCount())
+
+    </script>
+</body>
+</html>

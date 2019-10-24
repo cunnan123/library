@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>线性表</title>
+    <script src="./list.js"></script>
+    <script src="./orderList.js"></script>
+    <script src="./chainList.js"></script>
+    <script src="./loopList.js"></script>
+</head>
+
+<body>
+    线性表定义
+        零个或多个数据元素的有限序列
+    <script>
+        var li=new loopList()
+        li.insert(1,100)
+        li.insert(1,200)
+        li.insert(1,300)
+        li.insert(2,400)
+        li.insert(5,500)
+        li.delete(5)
+        li.update(2,1000)
+        console.log(li.list)
+        var a=li.selectByKey(2)
+        console.log(a)
+    </script>
+</body>
+
+</html>

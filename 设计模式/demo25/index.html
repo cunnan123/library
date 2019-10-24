@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>职责链模式</title>
+    <script src="./handler.js"></script>
+    <script src="./concreteHandler1.js"></script>
+    <script src="./concreteHandler2.js"></script>
+    <script src="./concreteHandler3.js"></script>
+</head>
+<body>
+    <script>
+        var h1=new concreteHandler1()
+        var h2=new concreteHandler2()
+        var h3=new concreteHandler3()
+        h1.setSuccessor(h2)
+        h2.setSuccessor(h3)
+
+        var request=[2,5,14,22,18,3,27,20]
+        request.forEach(function(e){
+            h1.handlerRequest(e)
+        })
+
+    </script>
+</body>
+</html>
