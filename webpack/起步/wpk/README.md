@@ -7,3 +7,4 @@
     删除  "main": "index.js",
 要在 index.js 中打包 lodash 依赖，我们需要在本地安装 library：
     npm install --save lodash
+    
