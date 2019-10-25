@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>aa</title>
+</head>
+
+<body>
+    <script>
+        var s = 'goodgoogle'
+        // var t = 'ababaaaba'
+               //000123334
+               //000123112
+        // g  o  o  g  l  e  g  o  o  g  l  e
+        // 0, 0, 0, 0, 1, 1, 1, 1, 1, 3, 4, 5
+        var t = 'aax'
+        // var t = 'abcabx'
+        var pos = 0
+
+        function index(s, t, pos) {
+            var sLen = s.length
+            var tLen = t.length
+            var i = pos
+            var j = 0
+            var next=nexts(t)
+            console.log(next)
+            while (i < sLen && j < tLen) {
+                if (j==0||s[i] == t[j]) {
+                    i++
+                    j++
+                } else {
+                    j = next[j]
+                }
+            }
+
+            if (j >= tLen) {
+                return i - tLen
+            } else {
+                return '不存在'
+            }
+        }
+
+        function nexts(t) {
+            var tLen = t.length;
+            var i = 0; //遍历t
+            var j = 0; //记录回溯位置
+            var next = []
+            while (i < tLen) {
+                if (i == 0) {
+                    next[i] = j
+                    i++
+                } else if (t[i] == t[j]) {
+                    j++
+                    if (j == 1) {
+                        next[i] = 0
+                    } else {
+                        next[i] = j - 1
+                    }
+                    if(t[i]==t[i-1]){
+                        next[i]=next[i-1]
+                    }
+                    i++
+                } else {
+                    next[i] = j
+                    i++
+                   
+                }
+            }
+            return next
+        }
+        console.log(index(s, t, pos))
+    </script>
+</body>
+
+</html>
