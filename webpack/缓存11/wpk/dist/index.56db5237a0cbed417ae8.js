@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1],{3:function(n,e,o){"use strict";o.r(e);var c,i=o(0),l=o.n(i);function d(n){console.log(n)}document.body.appendChild(((c=document.createElement("div")).innerHTML=l.a.join(["Hello","webpack"]," "),c.onclick=d.bind(null,"Hello webpack!"),c))}},[[3,2,0]]]);
