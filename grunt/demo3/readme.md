@@ -1,0 +1,1 @@
+npm install grunt-contrib-uglify grunt-contrib-qunit grunt-contrib-concat grunt-contrib-jshint grunt-contrib-watch --save-dev
