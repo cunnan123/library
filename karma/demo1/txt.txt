@@ -1,0 +1,696 @@
+Karma-JavaScript出色的测试运行器
+介绍
+配置
+加
+开发者
+关于
+v4.0
+配置文件
+总览
+为了更好地为您服务，Karma需要了解您的项目以进行测试，这是通过配置文件完成的。生成初始配置文件的最简单方法是使用karma init命令。此页面列出了所有可用的配置选项。
+
+注意： 大多数框架适配器，报告器，预处理器和启动器都需要作为插件加载。
+Karma配置文件可以用JavaScript，CoffeeScript或TypeScript编写，并作为常规Node.js模块加载。
+
+除非作为参数提供，否则Karma CLI将在以下位置查找配置文件
+
+./karma.conf.js
+./karma.conf.coffee
+./karma.conf.ts
+./.config/karma.conf.js
+./.config/karma.conf.coffee
+./.config/karma.conf.ts
+以该顺序。
+
+在配置文件中，配置代码通过设置module.exports为指向一个接受一个参数的函数而组合在一起：配置对象。
+
+// karma.conf.js
+module.exports = function(config) {
+  config.set({
+    basePath: '../..',
+    frameworks: ['jasmine'],
+    //...
+  });
+};
+# karma.conf.coffee
+module.exports = (config) ->
+  config.set
+    basePath: '../..'
+    frameworks: ['jasmine']
+    # ...
+// karma.conf.ts
+module.exports = (config) => {
+  config.set({
+    basePath: '../..',
+    frameworks: ['jasmine'],
+    //...
+  });
+}
+定制的TypeScript配置
+Karma在后台使用ts-node将TypeScript转换为JavaScript。如果解析tsconfig.json已module配置为ES格式。您可能会收到类似的错误SyntaxError: Unexpected token。这是由于ES不支持Node 模块中的格式。要解决此问题，您需要将ts-node配置为使用commonjs模块格式。
+
+创建一个覆盖模块格式的JavaScript配置文件。
+
+// karma.conf.js
+require('ts-node').register({ 
+  compilerOptions: { 
+    module: 'commonjs' 
+  } 
+});
+require('./karma.conf.ts');
+文件模式
+所有指定文件路径的配置选项都使用minimatch库来促进灵活而简洁的文件表达式，因此您可以轻松列出要包含和排除的所有文件。
+
+您可以在下面的部分中找到有关每个配置选项的详细信息。以下选项使用最小匹配表达式：
+
+exclude
+files
+preprocessors
+例子：
+
+**/*.js：所有子目录中所有带有“ js”扩展名的文件
+**/!(jquery).js：与以前相同，但不包括“ jquery.js”
+**/(foo|bar).js：在所有子目录中，所有“ foo.js”或“ bar.js”文件
+配置选项
+这些是所有可用的配置选项。
+
+自动手表
+类型：布尔
+
+默认： true
+
+CLI ： --auto-watch、--no-auto-watch
+
+说明：启用或禁用监视文件并在其中任何一个文件更改时执行测试。
+
+autoWatchBatchDelay
+类型：数字
+
+默认： 250
+
+说明：当Karma监视文件中的更改时，它将尝试将多个更改批处理为一次运行，以便测试运行器不会尝试启动和重新启动运行的测试，而不会尝试过多地运行，或者在构建文件不在文件中时重新启动。一致状态。配置设置告诉Karma从上次文件更改开始要等待多长时间（以毫秒为单位），然后才能再次开始测试过程，每次文件更改（例如反跳）时都重置计时器。
+
+basePath
+类型：字符串
+
+默认： ''
+
+描述：将用于解析files和中定义的所有相对路径的根路径位置exclude。如果basePath配置是相对路径，则它将解析为__dirname配置文件的。
+
+browserDisconnectTimeout
+类型：数字
+
+默认： 2000
+
+说明： Karma等待浏览器重新连接多长时间（以毫秒为单位）。
+
+对于不稳定的连接，浏览器断开连接是很常见的，但是实际的测试执行仍在运行，没有任何问题。业力不会将断开连接视为立即失败，而是将等待browserDisconnectTimeout（ms）。如果浏览器在此期间重新连接，则一切正常。
+
+browserConsoleLogOptions
+类型：对象
+
+默认： {level: "debug", format: "%b %T: %m", terminal: true}
+
+描述：使用以下属性配置如何记录浏览器控制台，所有属性都是可选的：
+
+{
+  level:  string,
+  format: string,
+  path:   string,
+  terminal: boolean
+}
+这里level是所需的日志级别，log始终记录级别。格式是其中一个字符串%b，%t，%T，和%m与该浏览器串代替，分别登录小写型，以大写日志类型和日志信息。此格式只会影响输出文件。path是输出文件的输出路径，并terminal指示是否将日志写入终端。
+
+browserDisconnectTolerance
+类型：数字
+
+默认： 0
+
+说明：允许的断开连接数。
+
+The disconnectTolerance value represents the maximum number of tries a browser will attempt in the case of a disconnection. Usually, any disconnection is considered a failure, but this option allows you to define a tolerance level when there is a flaky network link between the Karma server and the browsers.
+
+browserNoActivityTimeout
+Type: Number
+
+Default: 30000
+
+Description: How long will Karma wait for a message from a browser before disconnecting from it (in ms).
+
+If, during test execution, Karma does not receive any message from a browser within browserNoActivityTimeout(ms), it will disconnect from the browser. The default is the one recommended by Travis (https://docs.travis-ci.com/user/gui-and-headless-browsers/#karma-and-firefox-inactivity-timeouts)
+
+browsers
+Type: Array
+
+Default: []
+
+CLI: --browsers Chrome,Firefox, --no-browsers
+
+Possible Values:
+
+Chrome (launcher requires karma-chrome-launcher plugin)
+ChromeCanary (launcher requires karma-chrome-launcher plugin)
+ChromeHeadless (launcher requires karma-chrome-launcher plugin ^2.1.0)
+PhantomJS (launcher requires karma-phantomjs-launcher plugin)
+Firefox (launcher requires karma-firefox-launcher plugin)
+Opera (launcher requires karma-opera-launcher plugin)
+IE (launcher requires karma-ie-launcher plugin)
+Safari (launcher requires karma-safari-launcher plugin)
+Description: A list of browsers to launch and capture. When Karma starts up, it will also start up each browser which is placed within this setting. Once Karma is shut down, it will shut down these browsers as well. You can capture any browser manually by opening the browser and visiting the URL where the Karma web server is listening (by default it is http://localhost:9876/).
+
+See config/browsers for more information. Additional launchers can be defined through plugins. Use the --no-browsers command line option to override the value of this setting specified in the configuration file with an empty list.
+
+captureTimeout
+Type: Number
+
+Default: 60000
+
+Description: Timeout for capturing a browser (in ms).
+
+The captureTimeout value represents the maximum boot-up time allowed for a browser to start and connect to Karma. If any browser does not get captured within the timeout, Karma will kill it and try to launch it again and, after three attempts to capture it, Karma will give up.
+
+client.args
+Type: Array
+
+Default: undefined
+
+CLI: All arguments after -- (only when using karma run)
+
+Description: When karma run is passed additional arguments on the command-line, they are passed through to the test adapter as karma.config.args (an array of strings). The client.args option allows you to set this value for actions other than run.
+
+How this value is used is up to your test adapter - you should check your adapter's documentation to see how (and if) it uses this value.
+
+client.useIframe
+Type: Boolean
+
+Default: true
+
+Description: Run the tests inside an iFrame or a new window
+
+If true, Karma runs the tests inside an iFrame. If false, Karma runs the tests in a new window. Some tests may not run in an iFrame and may need a new window to run.
+
+client.runInParent
+Type: Boolean
+
+Default: false
+
+Description: Run the tests on the same window as the client, without using iframe or a new window
+
+If true, Karma runs the tests inside the original window without using iframe. It will load the test scripts dynamically.
+
+client.captureConsole
+Type: Boolean
+
+Default: true
+
+Description: Capture all console output and pipe it to the terminal.
+
+client.clearContext
+Type: Boolean
+
+Default: true
+
+Description: Clear the context window
+
+If true, Karma clears the context window upon the completion of running the tests. If false, Karma does not clear the context window upon the completion of running the tests. Setting this to false is useful when embedding a Jasmine Spec Runner Template.
+
+colors
+Type: Boolean
+
+Default: true
+
+CLI: --colors, --no-colors
+
+Description: Enable or disable colors in the output (reporters and logs).
+
+concurrency
+Type: Number
+
+Default: Infinity
+
+Description: How many browsers Karma launches in parallel.
+
+Especially on services like SauceLabs and Browserstack, it makes sense only to launch a limited amount of browsers at once, and only start more when those have finished. Using this configuration, you can specify how many browsers should be running at once at any given point in time.
+
+crossOriginAttribute
+Type: Boolean
+
+Default: true
+
+Description: When true, this will append the crossorigin attribute to generated script tags, which enables better error reporting for JavaScript files served from a different origin. Disable this when you need to load external scripts that are served without the necessary Access-Control-Allow-Origin header.
+
+customContextFile
+Type: string
+
+Default: null
+
+Description: If null (default), uses karma's own context.html file.
+
+customDebugFile
+Type: string
+
+Default: null
+
+Description: If null (default), uses karma's own debug.html file.
+
+customClientContextFile
+Type: string
+
+Default: null
+
+Description: If null (default), uses karma's own client_with_context.html file (which is used when client.runInParent set to true).
+
+customHeaders
+Type: Array
+
+Default: undefined
+
+Description Custom HTTP headers that will be set upon serving files by Karma's web server. Custom headers are useful, especially with upcoming browser features like Service Workers.
+
+The customHeaders option allows you to set HTTP headers for files that match a regular expression. customHeaders is an array of Objects with properties as follows:
+
+match: Regular expression string to match files
+name: HTTP header name
+Example:
+
+customHeaders: [{
+  match: '.*foo.html',
+  name: 'Service-Worker-Allowed',
+  value: '/'
+}]
+detached
+Type: Boolean
+
+Default: false
+
+CLI: --detached
+
+Description: When true, this will start the karma server in another process, writing no output to the console. The server can be stopped using the karma stop command.
+
+exclude
+Type: Array
+
+Default: []
+
+Description: List of files/patterns to exclude from loaded files.
+
+failOnEmptyTestSuite
+Type: Boolean
+
+Default: true
+
+CLI: --fail-on-empty-test-suite, --no-fail-on-empty-test-suite
+
+Description: Enable or disable failure on running empty test-suites. If disabled the program will return exit-code 0 and display a warning.
+
+files
+Type: Array
+
+Default: []
+
+Description: List of files/patterns to load in the browser.
+
+See config/files for more information.
+
+forceJSONP
+Type: Boolean
+
+Default: false
+
+Description: Force socket.io to use JSONP polling instead of XHR polling.
+
+frameworks
+Type: Array
+
+Default: []
+
+Description: List of test frameworks you want to use. Typically, you will set this to ['jasmine'], ['mocha'] or ['qunit']...
+
+Please note just about all frameworks in Karma require an additional plugin/framework library to be installed (via NPM).
+
+Additional information can be found in plugins.
+
+listenAddress
+Type: String
+
+Default: '0.0.0.0' or LISTEN_ADDR
+
+Description: Address that the server will listen on. Change to 'localhost' to only listen to the loopback, or '::' to listen on all IPv6 interfaces
+
+hostname
+Type: String
+
+Default: 'localhost'
+
+Description: Hostname to be used when capturing browsers.
+
+httpsServerOptions
+Type: Object
+
+Default: {}
+
+Description: Options object to be used by Node's https class.
+
+Object description can be found in the NodeJS.org API docs
+
+Example:
+
+httpsServerOptions: {
+  key: fs.readFileSync('server.key', 'utf8'),
+  cert: fs.readFileSync('server.crt', 'utf8')
+},
+logLevel
+Type: Constant
+
+Default: config.LOG_INFO
+
+CLI: --log-level debug
+
+Possible values:
+
+config.LOG_DISABLE
+config.LOG_ERROR
+config.LOG_WARN
+config.LOG_INFO
+config.LOG_DEBUG
+Description: Level of logging.
+
+loggers
+Type: Array
+
+Default: [{type: 'console'}]
+
+Description: A list of log appenders to be used. See the documentation for log4js for more information.
+
+middleware
+Type: Array
+
+Default: []
+
+Description: List of names of additional middleware you want the karma server to use. Middleware will be used in the order listed.
+
+You must have installed the middleware via a plugin/framework (either inline or via NPM). Additional information can be found in plugins.
+
+The plugin must provide an express/connect middleware function (details about this can be found in the Express docs. An example of custom inline middleware is shown below.
+
+Example:
+
+function CustomMiddlewareFactory (config) {
+  return function (request, response, /* next */) {
+    response.writeHead(200)
+    return response.end("content!")
+  }
+}
+middleware: ['custom']
+plugins: [
+  {'middleware:custom': ['factory', CustomMiddlewareFactory]}
+  ...
+]
+mime
+Type: Object
+
+Default: {}
+
+Description: Redefine default mapping from file extensions to MIME-type
+
+Set property name to required MIME, provide Array of extensions (without dots) as it's value
+
+Example:
+
+mime: {
+   'text/x-typescript': ['ts','tsx']
+   'text/plain' : ['mytxt']
+}
+beforeMiddleware
+Type: Array
+
+Default: []
+
+Description: This is the same as middleware except that these middleware will be run before karma's own middleware.
+
+plugins
+Type: Array
+
+Default: ['karma-*']
+
+Description: List of plugins to load. A plugin can be a string (in which case it will be required by Karma) or an inlined plugin - Object. By default, Karma loads all sibling NPM modules which have a name starting with karma-*.
+
+Note: Just about all plugins in Karma require an additional library to be installed (via NPM).
+See plugins for more information.
+
+port
+Type: Number
+
+Default: 9876
+
+CLI: --port 9876
+
+Description: The port where the web server will be listening.
+
+If the defined port is already in use, karma will automatically increase its value in steps of 1 until a free port is found.
+
+processKillTimeout
+Type: Number
+
+Default: 2000
+
+Description: How long will Karma wait for browser process to terminate before sending a SIGKILL signal.
+
+If, after test execution or after Karma attempts to kill the browser, browser is not killed within processKillTimeout(ms), Karma will send a SIGKILL signal to attempt to kill the browser forcefully.
+
+preprocessors
+Type: Object
+
+Default: {'**/*.coffee': 'coffee'}
+
+Description: A map of preprocessors to use.
+
+Preprocessors can be loaded through plugins.
+
+Note: Just about all preprocessors in Karma (other than CoffeeScript and some other defaults) require an additional library to be installed (via NPM).
+Be aware that preprocessors may be transforming the files and file types that are available at run time. For instance, if you are using the "coverage" preprocessor on your source files, if you then attempt to interactively debug your tests, you'll discover that your expected source code is completely changed from what you expected. Because of that, you'll want to engineer this so that your automated builds use the coverage entry in the "reporters" list, but your interactive debugging does not.
+
+Click here for more information.
+
+protocol
+Type: String
+
+Default: 'http:'
+
+Possible Values:
+
+http:
+https:
+Description: Protocol used for running the Karma webserver.
+
+Determines the use of the Node http or https class.
+
+Note: Using 'https:' requires you to specify httpsServerOptions.
+httpModule
+Type: String
+
+Default: undefined
+
+Description: Module used for Karma webserver.
+
+Uses the provided module instead of node's built in http or https module. The module loaded here must exactly match the interface of node's http module. This can be useful for loading in a module like node-http2 to allow for http2 support.
+
+Note: if you're using this to enable http2 you must also set the protocol to https: and specify certificates as http2 can only run of https.
+proxies
+Type: Object
+
+Default: {}
+
+Description: A map of path-proxy pairs.
+
+The proxy can be specified directly by the target url or path, or with an object to configure more options. The available options are:
+
+target The target url or path (mandatory)
+changeOrigin Whether or not the proxy should override the Host header using the host from the target (default false)
+Example:
+
+proxies: {
+  '/static': 'http://gstatic.com',
+  '/web': 'http://localhost:9000',
+  '/img/': '/base/test/images/',
+  '/proxyfied': {
+    'target': 'http://myserver.localhost',
+    'changeOrigin': true
+  }
+},
+proxyValidateSSL
+Type: Boolean
+
+Default: true
+
+Description: Whether or not Karma or any browsers should raise an error when an invalid SSL certificate is found.
+
+reportSlowerThan
+Type: Number
+
+Default: 0
+
+Description: Karma will report all the tests that are slower than given time limit (in ms). This is disabled by default (since the default value is 0).
+
+reporters
+Type: Array
+
+Default: ['progress']
+
+CLI: --reporters progress,growl
+
+Possible Values:
+
+dots
+progress
+Description: A list of reporters to use.
+
+Additional reporters, such as growl, junit, teamcity or coverage can be loaded through plugins.
+
+Note: Just about all additional reporters in Karma (other than progress) require an additional library to be installed (via NPM).
+formatError
+Type: Function
+
+Default: undefined
+
+CLI: --format-error ./path/to/formatFunction.js
+
+Arguments:
+
+msg - A single line of the assertion error and stack trace (called for each line).
+Returns: A new error message line.
+
+Description: Format assertion errors and stack traces. Useful for removing vendors and compiled sources. Return an empty line '' to remove it.
+
+The CLI option should be a path to a file that exports the format function. This can be a function exported at the root of the module or an export named formatError.
+
+restartOnFileChange
+Type: Boolean
+
+Default: false
+
+Description: When Karma is watching the files for changes, it will delay a new run until the current run is finished. Enabling this setting will cancel the current run and start a new run immediately when a change is detected.
+
+retryLimit
+Type: Number
+
+Default: 2
+
+Description: When a browser crashes, karma will try to relaunch. This defines how many times karma should relaunch a browser before giving up.
+
+singleRun
+Type: Boolean
+
+Default: false
+
+CLI: --single-run, --no-single-run
+
+Description: Continuous Integration mode.
+
+If true, Karma will start and capture all configured browsers, run tests and then exit with an exit code of 0 or 1 depending on whether all tests passed or any tests failed.
+
+transports
+Type: Array
+
+Default: ['polling', 'websocket']
+
+Description: An array of allowed transport methods between the browser and testing server. This configuration setting is handed off to socket.io (which manages the communication between browsers and the testing server).
+
+proxyReq
+Type: Function
+
+Default: undefined
+
+Description: Called when requesting Proxy.
+
+Details about this can be found in the node-http-proxy. An example of overwriting the HTTP header is shown below.
+
+Example:
+
+proxyReq: function(proxyReq, req, res, options) {
+  proxyReq.setHeader('Referer', 'https://www.example.com/');
+}
+proxyRes
+Type: Function
+
+Default: undefined
+
+Description: Called when respnsing Proxy.
+
+Details about this can be found in the node-http-proxy. An example of overwriting the HTTP header is shown below.
+
+Example:
+
+proxyRes: function(proxyRes, req, res) {
+  if (proxyRes.headers['set-cookie']) {
+    proxyRes.headers['set-cookie'] = proxyRes.headers['set-cookie'].map(function (cookie) {
+      return cookie.replace(/\s*secure;?/i, '');
+    })
+  }
+}
+upstreamProxy
+Type: Object
+
+Default: undefined
+
+Description: For use when the Karma server needs to be run behind a proxy that changes the base url, etc
+
+If set then the following fields will be defined and can be overriden:
+
+path
+Type: String
+
+Default: '/'
+
+Description: Will be prepended to the base url when launching browsers and prepended to internal urls as loaded by the browsers
+
+port
+Type: Number
+
+Default: 9875
+
+Description: Will be used as the port when launching browsers
+
+hostname
+Type: String
+
+Default: 'localhost'
+
+Description: Will be used as the hostname when launching browsers
+
+protocol
+Type: String
+
+Default: 'http:'
+
+Description: Will be used as the protocol when launching browsers
+
+urlRoot
+Type: String
+
+Default: '/'
+
+Description: The base url, where Karma runs.
+
+All of Karma's urls get prefixed with the urlRoot. This is helpful when using proxies, as sometimes you might want to proxy a url that is already taken by Karma.
+
+browserSocketTimeout
+Type: Number
+
+Default: 20000
+
+说明：客户端套接字连接的超时（以毫秒为单位）。
+
+此配置表示客户端等待套接字连接的时间。
+
+在不同环境中运行浏览器时，客户端套接字连接所花费的时间可能不同。如果Karma无法在默认超时时间内连接，则可能会看到类似以下错误：
+
+ChromeHeadless have not captured in 60000ms, killing.
+Trying to start ChromeHeadless again (1/2).
+ChromeHeadless have not captured in 60000ms, killing.
+Trying to start ChromeHeadless again (2/2).
+ChromeHeadless have not captured in 60000ms, killing.
+ChromeHeadless failed 2 times(timeout). Giving up.
+如果看到此错误，则可以尝试增加套接字连接超时。
+
+业力是根据MIT许可发布的。网站由  Friedel Ziegelmayer撰写。艾萨克·杜拉佐（Isaac Durazo）的标志  。
