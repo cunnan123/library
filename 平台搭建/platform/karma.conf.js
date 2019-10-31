@@ -1,8 +1,8 @@
 module.exports = function (config) {
   config.set({
     basePath: '',
-    frameworks: ['jasmine'],
-    // frameworks: ['mocha','chai'],
+    // frameworks: ['jasmine'],
+    frameworks: ['mocha','chai'],
     files: [{
         pattern: 'src/*.js'
       },

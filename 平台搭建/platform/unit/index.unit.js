@@ -1,12 +1,6 @@
+var assert=chai.assert;
 describe("index", function () {
     it("add", function () {
-        expect(add(2,5)).toBe(7);
+        assert.equal(add(2,4),6)
     });
 });
-
-// describe('index', function () {
-//     it('add', function () {
-//         //expect(add(2,5)).toBe(7);
-//         expect(add(2,5)).to.be(7);
-//     });
-// });
