@@ -11,3 +11,18 @@ JSON 配置
 WXML 模板
     数据绑定
     没有被定义的变量的或者是被设置为 undefined 的变量不会被同步到 wxml 中
+
+    WXML 提供两种文件引用方式import和include。
+        import 可以在该文件中使用目标文件定义的 template
+        include 可以将目标文件中除了 <template/> <wxs/> 外的整个代码引入，相当于是拷贝到 include 位置
+WXSS 样式
+    公共样式、页面样式、其他样式
+    WXSS引用
+        @import './test_0.wxss'
+        由于WXSS最终会被编译打包到目标文件中，用户只需要下载一次，
+        在使用过程中不会因为样式的引用而产生多余的文件请求
+
+        伪元素选择器	::after	    view::after	    在 view 组件后边插入内容
+        伪元素选择器	::before	view::before	在 view 组件前边插入内容
+JavaScript 脚本
+    
