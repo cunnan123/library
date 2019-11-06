@@ -1,0 +1,16 @@
+允许上传的文件
+    wxs
+    png
+    jpg
+    jpeg
+    gif
+    svg
+    json
+    cer
+    mp3
+    aac
+    m4a
+    mp4
+    wav
+    ogg
+    silk
