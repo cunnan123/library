@@ -1,0 +1,3 @@
+<button hover-class="hover"> 点击button </button>
+
+<view hover-class="hover"> 点击view</view>
