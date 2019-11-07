@@ -4,11 +4,16 @@
     "pages/logs/logs"
   ],
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
-  },
-  "style": "v2",
-  "sitemapLocation": "sitemap.json"
+    "navigationBarBackgroundColor":"#aaafff",
+    "navigationBarTextStyle":"black",
+    "navigationBarTitleText":"test",
+    "navigationStyle":"default",
+    "backgroundColor":"#aa0000",
+    "backgroundTextStyle":"dark",
+    "backgroundColorTop":"#00ff00",
+    "backgroundColorBottom":"#00ff00",
+    "onReachBottomDistance":100,
+    "pageOrientation":"portrait"
+  }
+  
 }
