@@ -1,5 +1,15 @@
 {
-  "usingComponents": {},
-  "enablePullDownRefresh":true
-
+  "navigationBarBackgroundColor": "#000000",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "首页内容",
+  "navigationStyle":"default",
+  "backgroundColor":"#ff0000",
+  "backgroundTextStyle":"dark",
+  "backgroundColorTop":"#aaffaa",
+  "backgroundColorBottom":"#ffaaff",
+  "enablePullDownRefresh":true,
+  "onReachBottomDistance":50,
+  "pageOrientation":"portrait",
+  "disableScroll":true,
+  "usingComponents":{}
 }
