@@ -23,14 +23,14 @@
         {
           "pagePath":"pages/index/index",
           "text":"首页",
-          "iconPath":"",
-          "selectedIconPath":""
+          "iconPath":"test1.png",
+          "selectedIconPath":"test1.png"
         },
         {
           "pagePath":"pages/logs/logs",
           "text":"日志页",
-          "iconPath":"",
-          "selectedIconPath":""
+          "iconPath":"test1.png",
+          "selectedIconPath":"test1.png"
         }
     ],
     "borderStyle":"black",
