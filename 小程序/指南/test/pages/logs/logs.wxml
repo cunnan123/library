@@ -1,4 +1,7 @@
 <!--logs.wxml-->
+<button hover-class="hover"> 点击button </button>
+
+<view hover-class="hover"> 点击view</view>
 <view class="container log-list">
   <block wx:for="{{logs}}" wx:for-item="log"wx:key="index">
     <text class="log-item">{{index + 1}}. {{log}}</text>

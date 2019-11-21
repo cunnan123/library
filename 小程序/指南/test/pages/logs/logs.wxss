@@ -6,3 +6,8 @@
 .log-item {
   margin: 10rpx;
 }
+.hover{
+
+  background-color: gray;
+
+}
