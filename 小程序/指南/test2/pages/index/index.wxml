@@ -1,0 +1,5 @@
+<!--index.wxml-->
+<view class="container">
+
+  <button bindtap="testArray">测试按钮</button>
+</view>
