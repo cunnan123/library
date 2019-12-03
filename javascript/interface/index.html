@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./Interface.js"></script>
+</head>
+
+<body>
+    <script>
+        class Peson {
+            add() {
+                console.log('新增接口');
+            }
+            del() {
+                console.log('删除接口');
+            }
+        }
+        //在你使用该类的方法的时候先去检查你要用到的方法是否存在
+        var peson = new Peson();
+        //Interfaces
+        var check = new Interface('check', ['add', 'del']);
+        //检查你要用到的方法是否存在，如果你要用的方法没有实现，会抛出错误提示
+        Interface.ensureImplement(peson, check);
+        //使用接口
+        peson['add']();
+        peson.del();
+    </script>
+</body>
+
+</html>
