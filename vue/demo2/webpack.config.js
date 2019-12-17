@@ -26,7 +26,21 @@ module.exports = {
           'vue-style-loader',
           'css-loader'
         ]
-      }
+      },
+      
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 20000,
+              // limit: 200,
+              esModule :false
+            },
+          }
+        ],
+      }   
     ]
   },
   plugins: [

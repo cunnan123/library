@@ -1,5 +1,10 @@
 <template>
-  <div class="example">{{ msg }}</div>
+  <div class="example">
+    
+    <div>{{ msg }}</div>
+    <img src="./logo.png" alt="">
+    </div>
+  
 </template>
 
 <script>
@@ -16,4 +21,5 @@ export default {
 .example {
   color: red;
 }
+
 </style>

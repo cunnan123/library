@@ -14,3 +14,5 @@ npm install --save-dev babel-loader  vue-style-loader css-loader
 安装@babel/core
 npm install --save-dev @babel/core
 运行npm run build
+处理图片资源
+npm install  --save-dev file-loader url-loader
