@@ -26,3 +26,8 @@ npm install --save-dev stylus stylus-loader
 npm install --save-dev postcss-loader autoprefixer
 预处理器Babel
 npm install --save-dev babel-core babel-loader
+预处理器 排除node_modules
+exclude: file => (
+    /node_modules/.test(file) &&
+    !/\.vue\.js/.test(file)
+)
