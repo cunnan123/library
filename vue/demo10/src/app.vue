@@ -6,11 +6,12 @@
 <script>
 export default {
    created () {
-    console.log(this.$style)
+    console.log(this.$style);
+   
     // -> "red_1VyoJ-uZ"
     // 一个基于文件名和类名生成的标识符
   }
-}
+};
 
 </script>
 <style lang="scss" scoped module>
@@ -19,6 +20,6 @@ export default {
    color: $color;
   }
   .bold{
-   background: $primary;
+   background:   $primary;
   }
 </style>

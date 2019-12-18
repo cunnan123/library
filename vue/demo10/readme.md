@@ -43,3 +43,8 @@ CSS Modules
 自定义块
 CSS 提取
 npm install --save-dev mini-css-extract-plugin
+代码校验 (Linting) ESLint
+npm install --save-dev eslint eslint-loader eslint-plugin-vue
+
+代码校验 (Linting) stylelint
+npm install --save-dev stylelint-webpack-plugin

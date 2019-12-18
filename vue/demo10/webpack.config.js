@@ -1,7 +1,8 @@
 const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-var MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -10,13 +11,21 @@ module.exports = {
   },
   mode: 'development',
   module: {
-    rules: [{
+    rules: [
+      {
+        enforce: 'pre',
+        test: /\.(js|vue)$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/
+      },
+      {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
           hotReload: false // 关闭热重载
         }
       },
+
       // {
       //   test: /\.ts$/,
       //   loader: 'ts-loader',
@@ -46,19 +55,18 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        oneOf: [
-          {
+        oneOf: [{
             resourceQuery: /module/,
             use: [
               // 'vue-style-loader',
-              process.env.NODE_ENV === 'production'? 'vue-style-loader': MiniCssExtractPlugin.loader,
+              process.env.NODE_ENV === 'production' ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
               {
                 loader: 'css-loader',
                 options: {
-                  importLoaders: 2,      
-                  modules:{
+                  importLoaders: 2,
+                  modules: {
                     localIdentName: '[local]_[hash:base64:5]'
-                  }           
+                  }
                 }
               },
               {
@@ -82,11 +90,11 @@ module.exports = {
           {
             use: [
               // 'vue-style-loader',
-              process.env.NODE_ENV === 'production'? 'vue-style-loader': MiniCssExtractPlugin.loader,
+              process.env.NODE_ENV === 'production' ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
               {
                 loader: 'css-loader',
                 options: {
-                  importLoaders: 2         
+                  importLoaders: 2
                 }
               },
               {
@@ -109,69 +117,6 @@ module.exports = {
           }
         ]
       },
-      // {
-      //   test: /\.scss$/,
-      //   oneOf: [
-      //     {
-      //       resourceQuery: /module/,
-      //       use: [
-      //         'vue-style-loader',
-      //         {
-      //           loader: 'css-loader',
-      //           options: {
-      //             importLoaders: 2,      
-      //             modules:{
-      //               localIdentName: '[local]_[hash:base64:5]'
-      //             }           
-      //           }
-      //         },
-      //         {
-      //           loader: 'postcss-loader',
-      //           options: {
-      //             plugins: [
-      //               require('autoprefixer')
-      //             ]
-      //           }
-      //         },
-      //         {
-      //           loader: 'sass-loader',
-      //           options: {
-      //             // 你也可以从一个文件读取，例如 `variables.scss`
-      //             // 如果 sass-loader 版本 < 8，这里使用 `data` 字段
-      //             prependData: `$color: red;`
-      //           }
-      //         }
-      //       ]
-      //     },
-      //     {
-      //       use: [
-      //         'vue-style-loader',
-      //         {
-      //           loader: 'css-loader',
-      //           options: {
-      //             importLoaders: 2         
-      //           }
-      //         },
-      //         {
-      //           loader: 'postcss-loader',
-      //           options: {
-      //             plugins: [
-      //               require('autoprefixer')
-      //             ]
-      //           }
-      //         },
-      //         {
-      //           loader: 'sass-loader',
-      //           options: {
-      //             // 你也可以从一个文件读取，例如 `variables.scss`
-      //             // 如果 sass-loader 版本 < 8，这里使用 `data` 字段
-      //             prependData: `$color: red;`
-      //           }
-      //         }
-      //       ]
-      //     }
-      //   ]
-      // },
       {
         test: /\.(png|jpg|gif)$/i,
         use: [{
@@ -196,6 +141,9 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: 'style.css'
+    }),
+    new StyleLintPlugin({
+      files: ['**/*.{vue,htm,html,css,sss,less,scss,sass}'],
     })
   ]
 }
