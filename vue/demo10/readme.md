@@ -45,6 +45,8 @@ CSS 提取
 npm install --save-dev mini-css-extract-plugin
 代码校验 (Linting) ESLint
 npm install --save-dev eslint eslint-loader eslint-plugin-vue
-
+npm install --save-dev eslint-config-standard eslint-plugin-standard eslint-plugin-promise eslint-plugin-import eslint-plugin-node
 代码校验 (Linting) stylelint
-npm install --save-dev stylelint-webpack-plugin
+npm install --save-dev  stylelint stylelint-webpack-plugin stylelint-config-standard
+安装dev-server
+npm install --save-dev webpack-dev-server
