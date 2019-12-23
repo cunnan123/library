@@ -51,3 +51,6 @@ npm install --save-dev  stylelint stylelint-webpack-plugin stylelint-config-stan
 安装dev-server
 npm install --save-dev webpack-dev-server
 引入test类
+
+<!-- 安装全局sass文件
+npm install --save-dev sass-resources-loader -->

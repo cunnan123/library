@@ -13,14 +13,15 @@ export default {
 }
 </script>
 <style lang="scss" scoped module>
-  $primary: blue;
+$color:red;
+$primary: blue;
 
-  .red {
-    display: flex;
-    color: $color;
-  }
+.red {
+  display: flex;
+  color: $color;
+}
 
-  .bold {
-    background: $primary;
-  }
+.bold {
+  background: $primary;
+}
 </style>

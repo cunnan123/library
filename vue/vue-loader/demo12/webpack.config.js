@@ -86,6 +86,7 @@ module.exports = {
                   // 你也可以从一个文件读取，例如 `variables.scss`
                   // 如果 sass-loader 版本 < 8，这里使用 `data` 字段
                   prependData: `$color: red;`
+                
                 }
               }
             ]
