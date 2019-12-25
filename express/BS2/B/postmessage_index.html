@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <iframe src="http://localhost:3000/static/index.html" frameborder="0"></iframe>
+    <script>
+        window.addEventListener('message', function(e){
+            console.log(e)
+            var win = document.getElementsByTagName('iframe')[0].contentWindow;
+            win.postMessage('clientHTMl', 'http://localhost:3000')
+        })
+    </script>
+</body>
+
+</html>
