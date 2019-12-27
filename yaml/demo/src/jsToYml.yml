@@ -1,0 +1,2 @@
+fn: !<tag:yaml.org,2002:js/function> 'function () { return 1 }'
+reg: !<tag:yaml.org,2002:js/regexp> /test/
