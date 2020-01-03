@@ -7,7 +7,8 @@
 
 .hello {
   font-family: 'MyFont';
-  color: red;
+  color:blue;
+  /* color: red; */
   background: url('./icon.jpg') no-repeat;
   width: 200px;
   height: 160px;

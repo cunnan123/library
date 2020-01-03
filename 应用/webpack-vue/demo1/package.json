@@ -1,9 +1,14 @@
 {
   "name": "demo1",
+  "sideEffects": [
+    "./src/some-side-effectful-file.js",
+    "*.css"
+  ],
   "version": "1.0.0",
   "description": "npm init -y\r npm install webpack webpack-cli --save-dev\r npm install html-webpack-plugin clean-webpack-plugin --save-dev",
   "private": true,
   "scripts": {
+    "start": "node dev-server.js",
     "build": "webpack --config webpack.config.js"
   },
   "keywords": [],
@@ -19,9 +24,12 @@
     "style-loader": "^1.1.2",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1",
     "xml-loader": "^1.2.1"
   },
   "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
     "lodash": "^4.17.15"
   }
 }

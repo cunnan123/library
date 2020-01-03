@@ -3,15 +3,22 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {
   CleanWebpackPlugin
 } = require('clean-webpack-plugin');
+const webpack = require('webpack');
 module.exports = {
   mode: 'development',
-  entry: './src/index.js',
+  // mode: "production",//tree shaking
+  devtool: 'inline-source-map',
+  entry: {
+    app: './src/index.js',
+    print: './src/print.js'
+  },
   output: {
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
   module: {
-    rules: [{
+    rules: [
+      {
         test: /\.css$/,
         use: [
           'style-loader',
@@ -29,7 +36,7 @@ module.exports = {
         use: {
           loader: 'html-loader',
           options: {
-            attrs: [':data-src','img:src']
+            attrs: [':data-src', 'img:src']
           }
         }
       },
@@ -53,13 +60,20 @@ module.exports = {
       }
     ]
   },
+  resolve: {
+    alias: {
+      lvbo: path.resolve(__dirname, 'src/')
+    }
+  },
   plugins: [
     new CleanWebpackPlugin({
       cleanAfterEveryBuildPatterns: ['dist'],
     }),
     new HtmlWebpackPlugin({
       title: 'test'
-    })
+    }),
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin()
   ],
 
 };

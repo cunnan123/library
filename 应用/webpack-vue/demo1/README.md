@@ -6,3 +6,4 @@ npm install --save-dev style-loader css-loader
 npm install --save-dev file-loader
 npm install --save-dev html-loader
 npm install --save-dev csv-loader xml-loader
+npm install --save-dev webpack-dev-server
