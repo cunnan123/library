@@ -33,8 +33,15 @@ function component() {
     btn2.innerHTML = 'Click me and check the console!2222';
     btn2.onclick = printMe2;
     element.appendChild(btn2);
-
+    var btn3 = document.createElement('button');
+    btn3.innerHTML = '3333333333333333';
+    btn3.onclick = function () {
+        return import( /* webpackChunkName: "print33" */ './print3').then(function (module) {
+            var print = module.default;
+            print();
+        });
+    }
+    element.appendChild(btn3);
     return element;
 }
-
 document.body.appendChild(component());

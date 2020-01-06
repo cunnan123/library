@@ -10,3 +10,4 @@ npm install --save-dev webpack-dev-server
 npm install --save babel-core babel-loader
 npm install --save-dev webpack-merge
 npm install --save uglifyjs-webpack-plugin
+npm install --save-dev mini-css-extract-plugin

@@ -1,0 +1,21 @@
+@font-face {
+  font-family: 'MyFont';
+  src: url(f56a11692ad7e6264a14c80a55d90b7d.ttf);
+  font-weight: 600;
+  font-style: normal;
+}
+
+.hello {
+  font-family: 'MyFont';
+  color:blue;
+  /* color: red; */
+  background: url(782888ab5fad3b56aed3183426901b16.jpg) no-repeat;
+  width: 200px;
+  height: 160px;
+}
+img{
+  width: 200px;
+  height: 160px;
+}
+
+/*# sourceMappingURL=app.css.map*/

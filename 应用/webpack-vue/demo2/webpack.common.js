@@ -3,22 +3,26 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {
   CleanWebpackPlugin
 } = require('clean-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
   entry: {
     app: './src/index.js',
     print: './src/print.js'
   },
   output: {
-    filename: '[name].bundle.js',
+    filename: '[name].[chunkhash].js',
     path: path.resolve(__dirname, 'dist')
   },
   module: {
     rules: [{
         test: /\.css$/,
-        use: [
-          'style-loader',
+        use: [{
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: true,
+            },
+          },
           'css-loader'
         ]
       },
@@ -70,30 +74,35 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'test'
     }),
-    
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+    }),
+   
   ],
   optimization: {
     splitChunks: {
       chunks: 'all',
-      // minSize: 30000,
-      // maxSize: 0,
-      // minChunks: 1,
-      // maxAsyncRequests: 5,
-      // maxInitialRequests: 3,
-      // automaticNameDelimiter: '~',
-      // automaticNameMaxLength: 30,
-      name: 'common',
-      // cacheGroups: {
-      //   vendors: {
-      //     test: /[\\/]node_modules[\\/]/,
-      //     priority: -10
-      //   },
-      //   default: {
-      //     minChunks: 2,
-      //     priority: -20,
-      //     reuseExistingChunk: true
-      //   }
-      // }
-    }
+      minSize: 30000,
+      maxSize: 0,
+      minChunks: 1,
+      maxAsyncRequests: 6,
+      maxInitialRequests: 4,
+      automaticNameDelimiter: '-',
+      automaticNameMaxLength: 30,
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true
+        }
+      }
+    },
+    runtimeChunk: {
+      name: "manifest",
+    },
   }
 };
