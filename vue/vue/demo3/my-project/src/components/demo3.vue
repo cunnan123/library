@@ -1,6 +1,6 @@
 <template>
   <div >
-   <p>{{ message }}</p>
+   <p v-once>{{ message }}</p>
     <button v-on:click="reverseMessage">反转消息</button>
     <input v-model="message">
       <todo-item
