@@ -26,6 +26,7 @@
          }]
      },
      resolve: {
+        extensions: ['.js', '.json'],
         alias: {
           lvbo: path.resolve(__dirname, 'src/')
         }

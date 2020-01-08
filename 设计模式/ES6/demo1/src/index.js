@@ -1,4 +1,4 @@
-import operationFactory from './Simplefactorymodel/index';
+import operationFactory from './Simplefactorymodel';
 var factory = new operationFactory();
 var sub = factory.inOperation("+");
 sub.inputOne = 1;
