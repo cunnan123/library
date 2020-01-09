@@ -17,6 +17,11 @@ import demo14 from '@/demo14'
 import demo15 from '@/demo15'
 import demo16 from '@/demo16'
 import demo17 from '@/demo17'
+import demo18 from '@/demo18'
+import demo19 from '@/demo19'
+import demo20 from '@/demo20'
+import demo21 from '@/demo21'
+import demo22 from '@/demo22'
 
 Vue.use(Router)
 
@@ -24,6 +29,31 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'demo22',
+      component: demo22
+    },
+    {
+      path: '/demo21',
+      name: 'demo21',
+      component: demo21
+    },
+    {
+      path: '/demo20',
+      name: 'demo20',
+      component: demo20
+    },
+    {
+      path: '/demo19',
+      name: 'demo19',
+      component: demo19
+    },
+    {
+      path: '/demo18',
+      name: 'demo18',
+      component: demo18
+    },
+    {
+      path: '/demo17',
       name: 'demo17',
       component: demo17
     },
