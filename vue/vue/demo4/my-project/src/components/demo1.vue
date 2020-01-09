@@ -1,15 +1,16 @@
 <template>
 <div>
-   
+    <base-input v-model="username" :a="a" required placeholder="Enter your username"></base-input>
 </div>
 </template>
 
 <script>
 export default {
-    name: 'demo22',
+    name: 'demo1',
     data() {
         return {
-           
+            username: '',
+            a:'aaa'
         }
 
     },

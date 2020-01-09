@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import demo22 from '@/demo22'
+import demo1 from '@/demo1'
 
 Vue.use(Router)
 
@@ -9,8 +9,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'demo22',
-      component: demo22
+      name: 'demo1',
+      component: demo1
     },
    
   ]

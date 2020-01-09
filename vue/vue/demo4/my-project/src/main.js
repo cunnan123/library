@@ -3,12 +3,18 @@ import App from './App'
 import router from './router'
 Vue.config.productionTip = false
 
-Vue.component('alert-box', {
+Vue.component('base-input', {
+  inheritAttrs: false,
+  props: ['label', 'value'],
   template: `
-    <div class="demo-alert-box">
-      <strong>Error!</strong>
-      <slot></slot>
-    </div>
+    <label v-bind:a="$attrs.a">
+      {{ label }}
+      <input
+        v-bind="$attrs"
+        v-bind:value="value"
+        v-on:input="$emit('input', $event.target.value)"
+      >
+    </label>
   `
 })
 new Vue({
