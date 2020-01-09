@@ -1,16 +1,15 @@
 <template>
 <div>
-    <base-input v-model="username" :a="a" required placeholder="Enter your username"></base-input>
+    <base-checkbox v-model="lovingVue"></base-checkbox>
 </div>
 </template>
 
 <script>
 export default {
-    name: 'demo1',
+    name: 'demo23',
     data() {
         return {
-            username: '',
-            a:'aaa'
+            lovingVue: false
         }
 
     },
@@ -18,7 +17,9 @@ export default {
 
     },
     watch: {
-
+        lovingVue(n) {
+            console.log(n)
+        }
     }
 
 }

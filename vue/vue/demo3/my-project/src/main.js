@@ -3,12 +3,22 @@ import App from './App'
 import router from './router'
 Vue.config.productionTip = false
 
-Vue.component('alert-box', {
+// 一个组件上的 v-model 默认会利用名为 value 的 prop 和名为 input 的事件
+Vue.component('base-checkbox', {
+  model: {
+    prop: 'checked',
+    event: 'change'
+  },
+  props: {
+    checked: Boolean,
+    default:true
+  },
   template: `
-    <div class="demo-alert-box">
-      <strong>Error!</strong>
-      <slot></slot>
-    </div>
+    <input
+      type="checkbox"
+      v-bind:checked="checked"
+      v-on:change="$emit('change', $event.target.checked)"
+    >
   `
 })
 new Vue({

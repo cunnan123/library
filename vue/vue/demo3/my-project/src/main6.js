@@ -17,6 +17,7 @@ Vue.component('base-input', {
     </label>
   `
 })
+
 new Vue({
   el: '#app',
   router,
