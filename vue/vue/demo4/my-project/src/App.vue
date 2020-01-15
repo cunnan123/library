@@ -1,7 +1,7 @@
 <template>
 <div id="app">
-    <router-link to="/demo36">demo36</router-link>
-    <router-link to="/demo37">demo37</router-link>
+    <router-link to="/index">index页</router-link>
+    <router-link to="/content">content页</router-link>
     <router-view/>
 </div>
 </template>
