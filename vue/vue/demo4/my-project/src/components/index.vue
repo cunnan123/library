@@ -1,11 +1,34 @@
 <template>
 <div>
-    <div class="div">{{index}}</div>
-    <button @click="btn">按钮</button>
+    <br>
+    <br>
+    <button @click="btn1">btn1</button>
+    <button @click="btn2">btn2</button>
+    <button @click="btn3">btn3</button>
+    <br>
+    <br>
+    <div>{{index}}</div>
+    <div>{{indexcomputed}}</div>
+    <br>
+    <br>
+    <div>{{state}}</div>
+    <div>{{state1}}</div>
+    <div>{{state2}}</div>
+    <br>
+    <br>
+    <div>{{getters}}</div>
+    <div>{{getters333('getters333')}}</div>
 </div>
 </template>
 
 <script>
+import {
+    mapState,
+    mapGetters,
+    mapMutations,
+    mapActions
+} from 'vuex'
+import TYPE from './../module/global/types'
 export default {
     name: 'index',
     beforeRouteEnter(to, from, next) {
@@ -34,38 +57,56 @@ export default {
     props: ['route'], //{{route}}
     data() {
         return {
-            index: 'index页面'
+            index: 'index'
         }
-    },
-    created() {
-
     },
     mounted() {
         console.log('mounted', this.route)
     },
-
-    methods: {
-        btn() {
-            if (this.index == 'aaaaaa') {
-                this.index = 'index页面'
-            } else {
-                this.index = 'aaaaaa'
-            }
+    computed: {
+        indexcomputed() {
+            return this.index + '  computed'
         },
-        test() {
-            // router.push({ name: 'user', params: { userId: '123' },query: { plan: 'private' }})
-            // router.replace({ name: 'user', params: { userId: '123' },query: { plan: 'private' }})
-            // router.go(1)
-        }
-
+        ...mapState(['state']),
+        ...mapState({
+            state1: 'state',
+            state2() {
+                return this.$store.state.state + '2'
+            },
+        }),
+        ...mapGetters(['getters']),
+        ...mapGetters({
+            getters333: 'getters3'
+        }),
+    },
+    methods: {
+        ...mapMutations({
+            mutations: TYPE.MUTATIONS.MUTATIONS
+        }),
+        ...mapMutations([TYPE.MUTATIONS.MUTATIONS]),
+        ...mapActions([TYPE.ACTIONS.ACTIONS]),
+        btn1() {
+            this.mutations({
+                type: TYPE.MUTATIONS.MUTATIONS,
+                mutations: 'mutations1'
+            })
+        },
+        btn2() {
+            this[TYPE.MUTATIONS.MUTATIONS]({
+                type: TYPE.MUTATIONS.MUTATIONS,
+                mutations: 'mutations2'
+            })
+        },
+        btn3() {
+            this[TYPE.ACTIONS.ACTIONS]({
+                type: TYPE.MUTATIONS.MUTATIONS,
+                actions: 'actions1'
+            })
+        },
     }
 }
 </script>
 
 <style scoped>
-.div {
-    width: 300px;
-    height: 200px;
-    background: #afa;
-}
+
 </style>
