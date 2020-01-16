@@ -1,13 +1,17 @@
 <template>
 <div>
-    <div class="div">{{content}}</div>
-    <button @click="btn">按钮</button>
+    <transition name="slide">
+        <div>
+            <div class="div">{{content}}</div>
+            <button @click="btn">按钮</button>
+        </div>
+    </transition>
 </div>
 </template>
 
 <script>
 export default {
-    name: 'content',
+    name: 'contents',
     data() {
         return {
             content: 'content页面'
