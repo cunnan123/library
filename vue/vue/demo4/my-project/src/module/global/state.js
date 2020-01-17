@@ -1,5 +1,6 @@
 export default function state() {
   return {
-    state: 'state'
+    state: 'state',
+    message: "message"
   }
 }

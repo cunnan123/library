@@ -28,6 +28,9 @@
     <br>
     <button @click="btn4">btn4</button>
     <button @click="btn5">btn5</button>
+    <br>
+    <br>
+    <input v-model="messages">
 
 </div>
 </template>
@@ -94,6 +97,16 @@ export default {
         }),
         ...mapState('index', ['state3']),
         ...mapGetters('index', ['gettersindexcomponent']),
+
+        ...mapState(['message']),
+        messages: {
+            get() {
+                return this.message
+            },
+            set(value) {
+                this.updateMessage(value)
+            }
+        }
     },
     methods: {
         ...mapMutations({
@@ -133,6 +146,15 @@ export default {
                 actionsindexcomponent: 'actionsindexcomponent'
             })
         },
+
+        ...mapMutations(['updateMessage']),
+    },
+    // 依赖注入
+    // inject: ['getMap']  后代组件里使用 inject 选项指定
+    provide: function () {
+        return {
+            getMap: this.getMap
+        }
     }
 }
 </script>
