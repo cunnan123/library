@@ -18,16 +18,30 @@
     <br>
     <div>{{getters}}</div>
     <div>{{getters333('getters333')}}</div>
+    <br>
+    <br>
+    <div>{{state3}}</div>
+    <br>
+    <br>
+    <div>{{gettersindexcomponent}}</div>
+    <br>
+    <br>
+    <button @click="btn4">btn4</button>
+    <button @click="btn5">btn5</button>
+
 </div>
 </template>
 
 <script>
+// import { createNamespacedHelpers } from 'vuex'
+// const { mapState, mapActions } = createNamespacedHelpers('index')
 import {
     mapState,
     mapGetters,
     mapMutations,
     mapActions
 } from 'vuex'
+
 import TYPE from './../module/global/types'
 export default {
     name: 'index',
@@ -78,6 +92,8 @@ export default {
         ...mapGetters({
             getters333: 'getters3'
         }),
+        ...mapState('index', ['state3']),
+        ...mapGetters('index', ['gettersindexcomponent']),
     },
     methods: {
         ...mapMutations({
@@ -101,6 +117,20 @@ export default {
             this[TYPE.ACTIONS.ACTIONS]({
                 type: TYPE.MUTATIONS.MUTATIONS,
                 actions: 'actions1'
+            })
+        },
+        ...mapMutations('index', ['mutationsindexcomponent']),
+        ...mapActions('index', ['actionsindexcomponent']),
+        btn4() {
+            this.mutationsindexcomponent({
+                type: 'mutationsindexcomponent',
+                mutationsindexcomponent: 'mutationsindexcomponent'
+            })
+        },
+        btn5() {
+            this.actionsindexcomponent({
+                type: 'mutationsindexcomponent',
+                actionsindexcomponent: 'actionsindexcomponent'
             })
         },
     }
