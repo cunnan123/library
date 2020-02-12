@@ -2,6 +2,7 @@
 <div id="app">
     <router-link to="/index/222?plan=private">index页</router-link>
     <router-link to="/contents">content页</router-link>
+    <img src="/static/logo.png" alt="">
     <transition :name="transitionName">
         <router-view></router-view>
     </transition>
