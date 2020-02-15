@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/main.vue?2954"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;AA0BA;AACA;AACA;AACA","file":"app.style.css","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* 全局样式 */\n.example2 {\r\n  color:blue;\n}\r\n"],"sourceRoot":""}
