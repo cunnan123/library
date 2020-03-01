@@ -3,18 +3,10 @@ import App from './App'
 import router from './router'
 import Vuex from 'vuex'
 import 'es6-promise/auto'
-import state from './module'
+import state from './state'
 Vue.use(Vuex)
 const store = new Vuex.Store(state)
-// // 注册模块 `myModule`
-// store.registerModule('myModule', {
-//   // ...
-// })
-// // 注册嵌套模块 `nested/myModule`
-// store.registerModule(['nested', 'myModule'], {
-//   // ...
-// })
-Vue.config.productionTip = false
+Vue.config.productionTip = false 
 new Vue({
   el: '#app',
   store,
@@ -22,4 +14,3 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
-
