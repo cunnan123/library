@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            margin: 0px;
+            padding: 0;
+        }
+
+        .wrapper {
+            display: flex;
+        }
+
+        .boxleft,
+        .boxright {
+            flex: 0 0 200px;
+            background-color: blue;
+        }
+
+        .boxcenter {
+            flex: 1;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="boxleft">left</div>
+        <div class="boxcenter">content</div>
+        <div class="boxright">right</div>
+    </div>
+</body>
+
+</html>
