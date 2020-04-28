@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 封装版 -->
+</head>
+<body>
+    <script type="text/javascript">
+
+        var boo = false;
+        var iframe = document.createElement('iframe');
+        var loadData = function() {
+            if (boo) {
+                
+                var data = iframe.contentWindow.name;    //获取window.name
+                console.log(data); 
+                //销毁数据   
+                iframe.contentWindow.document.write('');
+                iframe.contentWindow.close();
+                document.body.removeChild(iframe);
+            } else {
+               
+                boo = true;
+                iframe.contentWindow.location = 'about:blank';    // 使iframe和当前页面同源，设置的代理文件,iframe重新载入
+            }  
+        };
+        iframe.src = 'http://localhost:3000/static/index2.html';
+        
+        if (iframe.attachEvent) {
+            iframe.attachEvent('onload', loadData);
+        } else {
+            iframe.onload  = loadData;
+        }
+        document.body.appendChild(iframe);
+    </script>
+</body>
+</html>
