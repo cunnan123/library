@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class=" " id="someElement">fgfgf</div>
+    <script>
+        //dom引用置空做法
+        function assignHandler() {
+            var element = document.getElementById('someElement');
+            var id = element.id;
+            element.onclick = function () {
+                id = id + 1
+
+            };
+            element = null;
+            console.dir(element)
+        }
+        assignHandler()
+    </script>
+</body>
+
+</html>

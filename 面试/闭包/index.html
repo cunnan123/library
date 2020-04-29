@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function makeAdder(x) {
+            return function (y) {
+                return x + y;
+            };
+        }
+
+        var add2 = makeAdder(2);
+
+        console.dir(add2); // 4
+        // 释放对闭包的引用
+        add2 = null;
+    </script>
+</body>
+
+</html>

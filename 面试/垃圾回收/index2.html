@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 定时器的回收
+        function bb() {
+            var a = 0;
+            var f=function () {
+                console.log(a++);
+                if(a==5)  {
+                    clearInterval(b)
+                    f=null
+                    console.dir(f)
+                }
+            }
+           
+            var b=setInterval(f, 1000);
+           
+        }
+        bb();
+    </script>
+</body>
+
+</html>
