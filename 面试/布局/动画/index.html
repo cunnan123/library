@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 400px;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .imgwraper {
+            width: 1200px;
+            animation: frames 5s ease-out infinite;
+        }
+
+        .img {
+            float: left;
+            width: 400px;
+            height: 300px;
+        }
+
+        @keyframes frames {
+
+            0%,
+            25% {
+                margin-left: 0;
+            }
+
+            35%,
+            60% {
+                margin-left: -400px;
+            }
+
+            70%,
+            100% {
+                margin-left: -800px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <div class="imgwraper">
+            <img src="./aa.webp" alt="">
+            <img src="./aa.webp" alt="">
+            <img src="./aa.webp" alt="">
+        </div>
+    </div>
+
+</body>
+
+</html>
