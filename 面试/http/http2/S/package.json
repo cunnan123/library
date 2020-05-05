@@ -1,0 +1,23 @@
+{
+  "name": "s",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "helper": "0.0.13",
+    "i": "^0.3.6",
+    "node-npm": "^1.0.0",
+    "node-openssl": "0.0.2-security",
+    "spdy": "^4.0.2"
+  },
+  "devDependencies": {
+    "http2": "^3.3.7"
+  }
+}
