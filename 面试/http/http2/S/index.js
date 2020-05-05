@@ -15,9 +15,11 @@ app.use(function (req, res, next) {
 });
 //配置路由
 app.use('/res', router)
+const port = 3000
+// //http1.1配置
+// app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
 // http2配置
-const port = 3000
 var options = {
     key: fs.readFileSync('./http2.key'), //读取key
     cert: fs.readFileSync('./http2.crt') //读取crt
