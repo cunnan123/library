@@ -370,3 +370,16 @@ Promise
     应用
         Ajax
         加载图片
+Symbol
+    Symbol是由ES6规范引入的一项新特性，它的功能类似于一种标识唯一性的ID。通常情况下，我们可以通过调用Symbol()函数来创建一个Symbol实例：
+        let s1 = Symbol()
+        let s2 = Symbol('another symbol')
+    应用场景
+        使用Symbol来作为对象属性名(key)
+        使用Symbol来替代常量
+        使用Symbol定义类的私有属性/方法
+        注册和获取全局Symbol
+            let gs1 = Symbol.for('global_symbol_1')  //注册一个全局Symbol
+            let gs2 = Symbol.for('global_symbol_1')  //获取全局Symbol
+            gs1 === gs2  // true
+                这样一个Symbol不光在单个window中是唯一的，在多个相关window间也是唯一的

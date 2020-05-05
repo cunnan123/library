@@ -1,0 +1,22 @@
+常见定位方案
+    普通流 (normal flow)
+    浮动 (float)
+    绝对定位 (absolute positioning)
+BFC 概念
+    Formatting context(格式化上下文) 
+        是 W3C CSS2.1 规范中的一个概念。它是页面中的一块渲染区域，并且有一套渲染规则，它决定了其子元素将如何定位，以及和其他元素的关系和相互作用。
+    BFC 
+        即 Block Formatting Contexts (块级格式化上下文)，它属于上述定位方案的普通流。
+        具有 BFC 特性的元素可以看作是隔离了的独立容器，容器里面的元素不会在布局上影响到外面的元素，并且 BFC 具有普通容器所没有的一些特性。
+        通俗一点来讲，可以把 BFC 理解为一个封闭的大箱子，箱子内部的元素无论如何翻江倒海，都不会影响到外部。
+触发 BFC
+    只要元素满足下面任一条件即可触发 BFC 特性：
+        1.body 根元素
+        2.浮动元素：float 除 none 以外的值
+        3.绝对定位元素：position (absolute、fixed)
+        4.display 为 inline-block、table-cells、flex
+        5.overflow 除了 visible 以外的值 (hidden、auto、scroll)
+BFC 特性及应用
+    同一个 BFC 下外边距会发生折叠
+    BFC 可以包含浮动的元素（清除浮动）
+    BFC 可以阻止元素被浮动元素覆盖(可以用来实现两列自适应布局，左边的宽度固定，右边的内容自适应宽度)
