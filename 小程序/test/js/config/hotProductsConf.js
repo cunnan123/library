@@ -1,0 +1,26 @@
+export default [
+  {
+    nanme:'驾乘无忧1',
+    description:'安全驾车，一路顺风',
+    price:'99.8元起',
+    picture:null,
+    classify:'旅行',
+    link:null,
+  },
+  {
+    nanme:'驾乘无忧2',
+    description:'安全驾车，一路顺风',
+    price:'99.8元起',
+    picture:null,
+    classify:'旅行',
+    link:null,
+  },
+  {
+    nanme:'驾乘无忧3',
+    description:'安全驾车，一路顺风',
+    price:'99.8元起',
+    picture:null,
+    classify:'旅行',
+    link:null,
+  },
+]

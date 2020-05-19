@@ -1,5 +1,6 @@
-import userInfo from './userInfoClass';
-export default class baseUserInfoClass extends userInfo{
+import userInfoModel from './userInfoModel';
+// 用户基本信息类
+export default class baseUserInfoModel extends userInfoModel{
   constructor(){
     super();
     this.name=null;//姓名
@@ -25,6 +26,6 @@ export default class baseUserInfoClass extends userInfo{
 }
 
 // 测试
-var userA=new baseUserInfoClass()
+var userA=new baseUserInfoModel()
 var info=userA.getUserInfo();
 console.log(info)
