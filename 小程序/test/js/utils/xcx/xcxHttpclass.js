@@ -10,6 +10,7 @@ export default class xcxHttpClass extends httpClass{
         x: '',
         y: ''
       },
+      method:'post',
       header: {
         'content-type': 'application/json' // 默认值
       },

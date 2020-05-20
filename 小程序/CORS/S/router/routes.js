@@ -10,7 +10,10 @@ router.get('/get', function (req, res) {
 })
 
 router.post('/post', function (req, res) {
+ var id=setTimeout(function(){
   res.send('2')
+  clearTimeout(id)
+ },5000)
 })
 router.get('/jsonp/:callback', function (req, res) {
     let methodName = req.params.callback; 

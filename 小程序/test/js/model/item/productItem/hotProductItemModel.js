@@ -1,18 +1,23 @@
-import productModel from './productModel';
+import productItemModel from './productItemModel'
 // 热销产品信息类
-export default class hotProductModel extends productModel{
+export default class hotProductItemModel extends productItemModel{
   constructor(){
-    super();
+    super()
+    this.init()
+  }
+  init(){
     this.name=null;//名称
     this.description=null;//描述
     this.price=null;//价格
     this.picture=null;//图片
     this.classify=null;//分类
     this.link=null;//链接
-  
   }
-  //获取热销产品信息
-  getProduct(){  
+  insert(){}
+  delete(){}
+  update(){}
+  select(){}
+  show(){
     return {
       nanme:this.name||null,
       description:this.description||null,
@@ -22,14 +27,5 @@ export default class hotProductModel extends productModel{
       link:this.link||null,
     }
   }
-  //打开热销产品
-  openProduct(){
-    console.log('打开热销产品')
-    console.log('名称：',this.name)
-  }
 }
 
-// 测试
-// var proA=new hotProductModel()
-// var info=proA.getProduct();
-// console.log(info)

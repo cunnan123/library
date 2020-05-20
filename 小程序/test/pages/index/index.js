@@ -1,18 +1,14 @@
-import productListController from '../../js/controller/list/productListController/productListController';
+import hotProductListController from '../../js/controller/list/productList/hotProductListController';
+var hotProductList=new hotProductListController().show()
 
-var productList=new productListController().show()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    productList:null
+    hotProductList:hotProductList,
   },
-  openProduct(e){
-   productList[e.currentTarget.dataset.id].openProduct()
-  },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -32,8 +28,7 @@ Page({
    */
   onShow: function () {
    
-    this.setData({productList})
-
+  
   },
 
   /**
@@ -69,5 +64,42 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  http1(){
+    wx.request({
+      url: 'http://localhost:3000/res/post', //仅为示例，并非真实的接口地址
+      data: {a:10},
+      method:'post',
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success (res) {
+        console.log(res.data)
+      }
+    })
+  },
+  http2(){
+    return new Promise(function(resolve,reject){
+         wx.request({
+      url: 'http://localhost:3000/res/post', //仅为示例，并非真实的接口地址
+      data: {a:10},
+      method:'post',
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success (res) {
+        resolve(res)
+      },
+      fail(res){
+        reject(res)
+      }
+    })
+    })
+
+  },
+  async http(){
+    var res=await this.http2()
+    console.log(res)
+    console.log('aaaaaaaaa')
   }
 })

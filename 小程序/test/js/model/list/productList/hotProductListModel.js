@@ -1,8 +1,10 @@
-import listModel from '../listModel';
-// 数组列表类
-export default class bannerListModel extends listModel {
+import productListModel from './productListModel';
+export default class hotProductListModel extends productListModel {
   constructor() {
     super();
+    this.init()
+  }
+  init() {
     this.list = []
   }
   insert(item) {
@@ -21,7 +23,7 @@ export default class bannerListModel extends listModel {
     })
   }
   select() {}
-  show(){
+  show() {
     return this.list;
   }
 }
