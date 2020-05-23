@@ -1,8 +1,7 @@
 import main from '../main'
-export default class controller extends main{
-  constructor(){
+export default class controller extends main {
+  constructor() {
     super()
   }
-  init(){}
-  show(){}
+  init() {}
 }

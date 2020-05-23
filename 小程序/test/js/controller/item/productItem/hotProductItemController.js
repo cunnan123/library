@@ -9,6 +9,6 @@ export default class hotProductItemController extends productItemController {
     this.item = new hotProductItemModel()
   }
   show() {
-    return this.item.show()
+    return this.item
   }
 }

@@ -1,7 +1,7 @@
-import productListModel from './productListModel';
-export default class hotProductListModel extends productListModel {
+
+export default class listController {
   constructor() {
-    super();
+   
     this.init()
   }
   init() {
@@ -19,9 +19,7 @@ export default class hotProductListModel extends productListModel {
   }
   update() {
     this.list.forEach(function (e) {
-      e()
+      e.update()
     })
   }
 }
-
-// 测试

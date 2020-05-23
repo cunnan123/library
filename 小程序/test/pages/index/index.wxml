@@ -1,5 +1,5 @@
 
-<view wx:for="{{hotProductList}}" wx:key="index">
+<view wx:for="{{hotProductList}}" wx:key="index" catchtap="openPro" data-index="{{index}}">
   <view>名称:{{item.name}}</view>
   <view>描述:{{item.description}}</view>
   <view>价格:{{item.price}}</view>
@@ -9,3 +9,13 @@
 </view>
 <button catchtap="http1">按钮1</button>
 <button catchtap="http">按钮2</button>
+<view>
+  <view>{{address.address}}</view>
+</view>
+<view>
+  <view>{{userinfo.name}}</view>
+  <view>{{userinfo.sex}}</view>
+  <view>{{userinfo.age}}</view>
+  <view>{{userinfo.address}}</view>
+</view>
+<button catchtap="changeAddress">切换地址</button>

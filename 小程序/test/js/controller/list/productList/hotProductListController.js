@@ -22,7 +22,7 @@ export default class hotProductListController extends productListController {
       that.list.insert(item)
     })
   }
-  show() {
-    return this.list.show();
+   show() {
+    return this.list.list;
   }
 }
