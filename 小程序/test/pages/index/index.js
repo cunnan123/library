@@ -8,7 +8,8 @@ var list=new listController()
 var address=new noAutoAddressItemController().show()
 list.insert(userinfo)
 userinfo.addr(address)
-
+import xcxHttp from '../../js/utils/xcx/xcxHttpclass'
+var xhr=new xcxHttp().http
 Page({
 
   /**
@@ -51,6 +52,7 @@ Page({
    */
   onShow: function () {
     this.changeAddress()
+    this.http()
   },
 
   /**
@@ -87,44 +89,14 @@ Page({
   onShareAppMessage: function () {
 
   },
-  http1() {
-    wx.request({
-      url: 'http://localhost:3000/res/post', //仅为示例，并非真实的接口地址
+  async http() {
+    var res = await xhr({
+      url: 'http://localhost:3000/res/post',
       data: {
         a: 10
       },
-      method: 'post',
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success(res) {
-        console.log(res.data)
-      }
+      method: 'post'
     })
-  },
-  http2() {
-    return new Promise(function (resolve, reject) {
-      wx.request({
-        url: 'http://localhost:3000/res/post', //仅为示例，并非真实的接口地址
-        data: {
-          a: 10
-        },
-        method: 'post',
-        header: {
-          'content-type': 'application/json' // 默认值
-        },
-        success(res) {
-          resolve(res)
-        },
-        fail(res) {
-          reject(res)
-        }
-      })
-    })
-
-  },
-  async http() {
-    var res = await this.http2()
     console.log(res)
     console.log('aaaaaaaaa')
   }

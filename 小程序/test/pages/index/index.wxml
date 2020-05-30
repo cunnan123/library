@@ -7,8 +7,6 @@
   <view>分类:{{item.classify}}</view>
   <view>链接:{{item.link}}</view>
 </view>
-<button catchtap="http1">按钮1</button>
-<button catchtap="http">按钮2</button>
 <view>
   <view>{{address.address}}</view>
 </view>
